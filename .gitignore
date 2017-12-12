@@ -1,13 +1,13 @@
 *.tar.gz
 
 *.exe
-src/bitcoin
-src/bitcoind
-src/bitcoin-cli
-src/bitcoin-tx
-src/test/test_bitcoin
-src/test/test_bitcoin_fuzzy
-src/qt/test/test_bitcoin-qt
+src/vritzcoin
+src/vritzcoind
+src/vritzcoin-cli
+src/vritzcoin-tx
+src/test/test_vritzcoin
+src/test/test_vritzcoin_fuzzy
+src/qt/test/test_vritzcoin-qt
 
 # autoreconf
 Makefile.in
@@ -30,8 +30,8 @@ config.log
 config.status
 configure
 libtool
-src/config/bitcoin-config.h
-src/config/bitcoin-config.h.in
+src/config/vritzcoin-config.h
+src/config/vritzcoin-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -74,13 +74,13 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-bitcoin-qt
-Bitcoin-Qt.app
+vritzcoin-qt
+Vritzcoin-Qt.app
 background.tiff*
 
 # Unit-tests
 Makefile.test
-bitcoin-qt_test
+vritzcoin-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -93,7 +93,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_bitcoin.coverage/
+test_vritzcoin.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -108,5 +108,5 @@ test/cache/*
 
 /doc/doxygen/
 
-libbitcoinconsensus.pc
+libvritzcoinconsensus.pc
 contrib/devtools/split-debug.sh

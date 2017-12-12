@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017 The Bitcoin Core developers
+# Copyright (c) 2017 The Vritzcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import VritzcoinTestFramework
 from test_framework.util import *
 from test_framework.mininode import *
 
@@ -12,7 +12,7 @@ class BaseNode(P2PInterface):
     def on_version(self, message):
         self.nServices = message.nServices
 
-class NodeNetworkLimitedTest(BitcoinTestFramework):
+class NodeNetworkLimitedTest(VritzcoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

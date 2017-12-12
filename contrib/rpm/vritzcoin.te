@@ -1,0 +1,81 @@
+policy_module(vritzcoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type vritzcoin_t;
+type vritzcoin_exec_t;
+init_daemon_domain(vritzcoin_t, vritzcoin_exec_t)
+
+permissive vritzcoin_t;
+
+type vritzcoin_initrc_exec_t;
+init_script_file(vritzcoin_initrc_exec_t)
+
+type vritzcoin_conf_t;
+files_type(vritzcoin_conf_t)
+
+type vritzcoin_var_lib_t;
+files_type(vritzcoin_var_lib_t)
+
+type vritzcoin_var_run_t;
+files_type(vritzcoin_var_run_t)
+
+type vritzcoin_port_t;
+corenet_port(vritzcoin_port_t)
+
+########################################
+#
+# vritzcoin local policy
+#
+allow vritzcoin_t self:process { fork };
+
+allow vritzcoin_t self:fifo_file rw_fifo_file_perms;
+allow vritzcoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(vritzcoin_t, vritzcoin_conf_t, vritzcoin_conf_t)
+manage_files_pattern(vritzcoin_t, vritzcoin_conf_t, vritzcoin_conf_t)
+
+manage_dirs_pattern(vritzcoin_t, vritzcoin_var_lib_t, vritzcoin_var_lib_t)
+manage_files_pattern(vritzcoin_t, vritzcoin_var_lib_t, vritzcoin_var_lib_t)
+files_var_lib_filetrans(vritzcoin_t, vritzcoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(vritzcoin_t, vritzcoin_var_run_t, vritzcoin_var_run_t)
+manage_files_pattern(vritzcoin_t, vritzcoin_var_run_t, vritzcoin_var_run_t)
+
+sysnet_dns_name_resolve(vritzcoin_t)
+corenet_all_recvfrom_unlabeled(vritzcoin_t)
+
+allow vritzcoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(vritzcoin_t)
+corenet_tcp_sendrecv_generic_node(vritzcoin_t)
+corenet_tcp_sendrecv_all_ports(vritzcoin_t)
+corenet_tcp_bind_generic_node(vritzcoin_t)
+
+gen_require(`
+    type vritzcoin_port_t;
+')
+allow vritzcoin_t vritzcoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type vritzcoin_port_t;
+')
+allow vritzcoin_t vritzcoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(vritzcoin_t)
+
+files_read_etc_files(vritzcoin_t)
+
+miscfiles_read_localization(vritzcoin_t)
+
+sysnet_dns_name_resolve(vritzcoin_t)
+
+allow vritzcoin_t vritzcoin_exec_t:file execute_no_trans;
+allow vritzcoin_t self:process setsched;
+corecmd_exec_ls(vritzcoin_t)
+corenet_tcp_connect_http_port(vritzcoin_t)
+dev_read_urand(vritzcoin_t)
+fs_getattr_xattr_fs(vritzcoin_t)
+kernel_read_system_state(vritzcoin_t)

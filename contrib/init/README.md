@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: bitcoind.service
-Upstart: bitcoind.conf
-OpenRC:  bitcoind.openrc
-         bitcoind.openrcconf
-CentOS:  bitcoind.init
-OS X:    org.bitcoin.bitcoind.plist
+SystemD: vritzcoind.service
+Upstart: vritzcoind.conf
+OpenRC:  vritzcoind.openrc
+         vritzcoind.openrcconf
+CentOS:  vritzcoind.init
+OS X:    org.vritzcoin.vritzcoind.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

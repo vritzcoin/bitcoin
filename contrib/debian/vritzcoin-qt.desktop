@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Vritzcoin Core
+Comment=Connect to the Vritzcoin P2P Network
+Comment[de]=Verbinde mit dem Vritzcoin peer-to-peer Netzwerk
+Comment[fr]=Vritzcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Vritzcoin, eşten eşe kriptografik sanal para birimi
+Exec=vritzcoin-qt %u
+Terminal=false
+Type=Application
+Icon=vritzcoin128
+MimeType=x-scheme-handler/vritzcoin;
+Categories=Office;Finance;
+StartupWMClass=Vritzcoin-qt

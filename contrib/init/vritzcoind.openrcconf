@@ -1,0 +1,33 @@
+# /etc/conf.d/vritzcoind: config file for /etc/init.d/vritzcoind
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/vritzcoin/vritzcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/vritzcoind"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/vritzcoind.pid"
+
+# Where to write vritzcoind data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/vritzcoind"
+
+# User and group to own vritzcoind process
+#BITCOIND_USER="vritzcoin"
+#BITCOIND_GROUP="vritzcoin"
+
+# Path to vritzcoind executable
+#BITCOIND_BIN="/usr/bin/vritzcoind"
+
+# Nice value to run vritzcoind under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#BITCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for vritzcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BITCOIND_SIGTERM_TIMEOUT=60

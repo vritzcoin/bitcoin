@@ -1,0 +1,25 @@
+# It is not recommended to modify this file in-place, because it will
+# be overwritten during package upgrades. If you want to add further
+# options or overwrite existing ones then use
+# $ systemctl edit vritzcoind.service
+# See "man systemd.service" for details.
+
+# Note that almost all daemon options could be specified in
+# /etc/vritzcoin/vritzcoin.conf
+
+[Unit]
+Description=Vritzcoin daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/vritzcoind -daemon -conf=/etc/vritzcoin/vritzcoin.conf -pid=/run/vritzcoind/vritzcoind.pid
+# Creates /run/vritzcoind owned by vritzcoin
+RuntimeDirectory=vritzcoind
+User=vritzcoin
+Type=forking
+PIDFile=/run/vritzcoind/vritzcoind.pid
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
